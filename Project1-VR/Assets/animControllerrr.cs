@@ -6,25 +6,33 @@ using UnityEngine.SceneManagement;
 public class animControllerrr : MonoBehaviour {
 
     public Animator anim;
-    public GameObject cube;
+    //public GameObject cube;
 
     // Use this for initialization
     void Start()
     {
-        anim = gameObject.GetComponent<Animator>();
-        cube = gameObject.GetComponent<GameObject>();
+        //anim = gameObject.GetComponent<Animator>();
+        //cube = gameObject.GetComponent<GameObject>();
     }
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            anim.GetComponent<Animation>().Play("box_open");
-            SceneManager.LoadScene("scene2");
+            Debug.Log("W hit the box");
+            anim.SetTrigger("openBoxTrigger");
+
+            Invoke("ChangeLevel", 3.0f);
+            
             // logic for later: whenever the player open scene2 and answer the question
             // he will be back in scene1 and the door for the next room will be automatically
             // opened.
 
         }
+    }
+
+    void ChangeLevel()
+    {
+        SceneManager.LoadScene("scene2");
     }
 }
