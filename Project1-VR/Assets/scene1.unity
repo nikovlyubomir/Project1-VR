@@ -2198,7 +2198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36212873685b394299c301015aabec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadScene: scene2original
+  hasAnimation: 1
   anim: {fileID: 910968094}
+  animationTriggerName: openBoxTrigger
 --- !u!65 &1709163729
 BoxCollider:
   m_ObjectHideFlags: 0

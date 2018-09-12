@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class animControllerrr : MonoBehaviour {
 
-    public Animator anim;
+    
+    public string loadScene;
     //public GameObject cube;
+    public bool hasAnimation;
+    public Animator anim;
+    public string animationTriggerName;
 
     // Use this for initialization
     void Start()
     {
-        //anim = gameObject.GetComponent<Animator>();
+        if (!hasAnimation) { anim = null;  animationTriggerName = ""; }
         //cube = gameObject.GetComponent<GameObject>();
     }
     // Update is called once per frame
@@ -20,7 +24,8 @@ public class animControllerrr : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("W hit the box");
-            anim.SetTrigger("openBoxTrigger");
+           if (hasAnimation)
+            { anim.SetTrigger(animationTriggerName); }
 
             Invoke("ChangeLevel", 3.0f);
             
@@ -33,6 +38,6 @@ public class animControllerrr : MonoBehaviour {
 
     void ChangeLevel()
     {
-        SceneManager.LoadScene("scene2");
+        SceneManager.LoadScene(loadScene);
     }
 }
